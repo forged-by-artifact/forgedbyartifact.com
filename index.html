@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Artifact — Handcrafted Props for Environmental Storytelling</title>
+  <meta name="description" content="Artifact handcrafts custom props to aid in environmental storytelling for film, stage, and events." />
+
+  <!-- SEO / Social -->
+  <meta property="og:title" content="Artifact — Handcrafted Props" />
+  <meta property="og:description" content="Custom props for film, stage, and events. Built to tell your story." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://forgedbyartifact.com/" />
+  <meta property="og:image" content="/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon placeholders (replace with your own) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%23000'/><path d='M32 6 10 58h8l5-12h18l5 12h8L32 6zm-3 28 7-16 7 16H29z' fill='%23fff'/></svg>">
+
+  <style>
+    :root{
+      --bg:#0b0b0c;          /* near-black */
+      --panel:#121214;       /* elevated surfaces */
+      --text:#f3f3f3;        /* primary text */
+      --muted:#b6b6be;       /* secondary text */
+      --brand:#e0a34b;       /* warm brass/gold */
+      --brand-2:#7ec6c9;     /* aged teal */
+      --accent:#ffedc9;      /* light accent */
+      --max:1100px;
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:linear-gradient(180deg,var(--bg),#121217 45%,#141418);color:var(--text);font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:var(--max);margin:0 auto;padding:24px}
+    header{position:sticky;top:0;z-index:50;background:rgba(10,10,12,.7);backdrop-filter: blur(8px);border-bottom:1px solid #1e1e22}
+    nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .logo{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .logo-mark{width:28px;height:28px;border-radius:8px;background:conic-gradient(from 210deg, var(--brand), var(--brand-2));display:grid;place-items:center;box-shadow:var(--shadow)}
+    .logo-mark svg{width:18px;height:18px}
+    .navlinks{display:flex;gap:18px;flex-wrap:wrap}
+    .btn{display:inline-block;padding:12px 18px;border-radius:12px;border:1px solid #2a2a2f;background:#17171b;color:var(--text);box-shadow:var(--shadow)}
+    .btn.primary{background:linear-gradient(145deg,var(--brand),#d38a2a);color:#1a1206;border-color:#000;font-weight:700}
+    .btn.ghost{background:transparent;border-color:#2a2a2f}
+
+    /* Hero */
+    .hero{padding:72px 0 40px;border-bottom:1px solid #1e1e22;background:radial-gradient(1100px 500px at 10% -10%, rgba(224,163,75,.15), transparent 60%),radial-gradient(1200px 600px at 110% 0%, rgba(126,198,201,.12), transparent 60%)}
+    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
+    h1{font-size:clamp(36px,5vw,64px);line-height:1.03;margin:0 0 12px}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+    .tagline{font-size:clamp(18px,2.2vw,22px);color:var(--muted);max-width:60ch}
+    .hero-card{border:1px solid #2a2a2f;background:linear-gradient(180deg,#121216,#0f0f12);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+    .hero-card img{width:100%;height:auto;border-radius:14px;border:1px solid #27272c}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+
+    /* Sections */
+    section{padding:56px 0;border-bottom:1px solid #1e1e22}
+    h2{font-size:clamp(26px,3.2vw,40px);margin:0 0 8px}
+    p.lead{color:var(--muted);max-width:70ch}
+
+    /* Services */
+    .cards{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin-top:22px}
+    .card{grid-column:span 6;border:1px solid #2a2a2f;background:linear-gradient(180deg,#131317,#0f0f12);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .card h3{margin:6px 0 6px;font-size:20px}
+    .card p{margin:0;color:var(--muted)}
+    .chip{display:inline-flex;align-items:center;gap:8px;border:1px solid #32323a;border-radius:999px;padding:8px 12px;color:var(--accent);font-weight:600;background:#17171b}
+
+    /* Portfolio */
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px;margin-top:18px}
+    .shot{grid-column:span 4;position:relative;border-radius:16px;overflow:hidden;border:1px solid #2a2a2f;background:#0e0e11}
+    .shot img{display:block;width:100%;height:220px;object-fit:cover;filter:saturate(.85)}
+    .shot .label{position:absolute;left:10px;bottom:10px;background:rgba(0,0,0,.55);padding:6px 10px;border-radius:999px;font-size:12px;border:1px solid rgba(255,255,255,.1)}
+
+    /* Process */
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+    .step{border:1px solid #2a2a2f;border-radius:16px;padding:16px;background:linear-gradient(180deg,#131316,#0e0e12)}
+    .step .n{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:10px;background:linear-gradient(145deg,var(--brand),#d38a2a);color:#111;font-weight:900;margin-bottom:8px}
+    .step p{margin:4px 0 0;color:var(--muted)}
+
+    /* Contact */
+    .contact{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;align-items:start}
+    form{display:grid;gap:10px}
+    label{font-size:14px;color:var(--muted)}
+    input,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #2a2a2f;background:#111116;color:var(--text)}
+    textarea{min-height:120px}
+    .note{font-size:12px;color:var(--muted)}
+
+    footer{padding:40px 0;color:#bdbdc4}
+    .foot{display:flex;flex-wrap:wrap;align-items:center;gap:12px;justify-content:space-between;border-top:1px solid #1e1e22;padding-top:18px}
+    .social a{margin-right:10px}
+
+    /* Responsive */
+    @media (max-width: 920px){
+      .hero-grid, .contact{grid-template-columns:1fr}
+      .card{grid-column:span 12}
+      .shot{grid-column:span 6}
+      .steps{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width: 560px){
+      .shot{grid-column:span 12}
+      .steps{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to content</a>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <span class="logo-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2 3 22h6l3-7 3 7h6L12 2Z" fill="#111"/><path d="M12 4 5 20h2.6l2.6-6h3.6l2.6 6H19L12 4Z" fill="currentColor"/></svg>
+          </span>
+          <span>Artifact</span>
+        </div>
+        <div class="navlinks">
+          <a href="#work">Work</a>
+          <a href="#services">Services</a>
+          <a href="#process">Process</a>
+          <a href="#about">About</a>
+          <a href="#contact" class="btn ghost">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" aria-label="Intro">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Forged by hand. Built for story.</div>
+          <h1>Handcrafted props for film, stage, and events.</h1>
+          <p class="tagline">Artifact designs and fabricates custom props to aid in environmental storytelling — pieces that look like they’ve lived a life before the audience ever sees them.</p>
+          <div class="cta">
+            <a class="btn primary" href="#contact">Start a project</a>
+            <a class="btn" href="#work">See recent work</a>
+          </div>
+          <p class="note" style="margin-top:10px">Serving the Mid‑Atlantic and beyond. Based in Northern Virginia.</p>
+        </div>
+        <div class="hero-card">
+          <!-- Replace the placeholder with your own image(s) -->
+          <img alt="Prop fabrication montage placeholder" src="data:image/svg+xml;charset=utf-8,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23221c10'/><stop offset='1' stop-color='%230f1517'/></linearGradient></defs><rect width='100%' height='100%' fill='url(%23g)'/><g fill='%23e0a34b' fill-opacity='.18'><circle cx='200' cy='160' r='120'/><rect x='760' y='420' width='260' height='140' rx='18'/><path d='M520 120l80 180-160 0z'/></g><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='white' fill-opacity='.55' font-family='Inter,Arial' font-size='28'>Replace with portfolio image</text></svg>`)}" />
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK / PORTFOLIO -->
+    <section id="work" aria-label="Work">
+      <div class="container">
+        <h2>Selected Work</h2>
+        <p class="lead">A few recent builds. Swap these placeholders with your photos and add a short line of context.</p>
+        <div class="grid">
+          <!-- Portfolio shots (replace src with real images in /images) -->
+          <figure class="shot"><img alt="Weathered access panel prop" src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=1200&auto=format&fit=crop"/><figcaption class="label">Access Panel — Sci‑Fi</figcaption></figure>
+          <figure class="shot"><img alt="Wooden crate with stenciled markings" src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop"/><figcaption class="label">Crate — Period Dressing</figcaption></figure>
+          <figure class="shot"><img alt="Machined brass component" src="https://images.unsplash.com/photo-1532634896-26909d0d4b6a?q=80&w=1200&auto=format&fit=crop"/><figcaption class="label">Component — Practical FX</figcaption></figure>
+          <figure class="shot"><img alt="Electronics panel with toggle switches" src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop"/><figcaption class="label">Control Panel — Interactive</figcaption></figure>
+          <figure class="shot"><img alt="Leather-bound field journal" src="https://images.unsplash.com/photo-1523419409543-a5e549c1ae67?q=80&w=1200&auto=format&fit=crop"/><figcaption class="label">Hero Object — Film</figcaption></figure>
+          <figure class="shot"><img alt="Metal signage with aged paint" src="https://images.unsplash.com/photo-1514890547357-a9ee9ee7e1fe?q=80&w=1200&auto=format&fit=crop"/><figcaption class="label">Signage — Set Dressing</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" aria-label="Services">
+      <div class="container">
+        <h2>What we make</h2>
+        <p class="lead">From one‑off hero pieces to multiples for live events, we build durable, camera‑ready artifacts.</p>
+        <div class="cards">
+          <div class="card">
+            <span class="chip">Custom Props</span>
+            <h3>Hero objects & set dressing</h3>
+            <p>Fabrication in wood, metal, resin, and mixed media. Aging, distressing, and finishes for lived‑in realism.</p>
+          </div>
+          <div class="card">
+            <span class="chip">Interactive</span>
+            <h3>Electronics & practical effects</h3>
+            <p>Switches, lights, motion, and sound for audience‑proof interactives and practical on‑set gags.</p>
+          </div>
+          <div class="card">
+            <span class="chip">Scenic</span>
+            <h3>Small scenic fabrication</h3>
+            <p>Boxes, panels, signage, and small scenic elements that sell the world around your story.</p>
+          </div>
+          <div class="card">
+            <span class="chip">Support</span>
+            <h3>Repairs, mods, & multiples</h3>
+            <p>Maintain or modify existing pieces, produce backup copies, and prep items for travel and heavy use.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process" aria-label="Process">
+      <div class="container">
+        <h2>How we work</h2>
+        <p class="lead">Clear checkpoints from brief to delivery keep budgets on track and timelines predictable.</p>
+        <div class="steps">
+          <div class="step"><div class="n">1</div><strong>Consult</strong><p>We define scope, reference, budget, and deadlines.</p></div>
+          <div class="step"><div class="n">2</div><strong>Design</strong><p>Sketches/CAD and finish samples for approval.</p></div>
+          <div class="step"><div class="n">3</div><strong>Build</strong><p>Fabrication, finishing, and electronics integration.</p></div>
+          <div class="step"><div class="n">4</div><strong>Deliver</strong><p>Pack, ship/install, and provide care instructions.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" aria-label="About">
+      <div class="container">
+        <h2>About Artifact</h2>
+        <p class="lead">We’re a small shop focused on environmental storytelling. Our builds are engineered for repeat handling and close‑up scrutiny — because the best props don’t just decorate a scene, they live in it.</p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" aria-label="Contact">
+      <div class="container contact">
+        <div>
+          <h2>Start a project</h2>
+          <p class="lead">Tell us what you’re building. We’ll reply with next steps and a ballpark estimate.</p>
+          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <!-- Netlify-compatible static form (works on GitHub Pages when paired with Netlify, or replace with mailto:) -->
+            <input type="hidden" name="form-name" value="contact" />
+            <p hidden>
+              <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+            </p>
+            <label for="name">Name</label>
+            <input id="name" name="name" autocomplete="name" required />
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" autocomplete="email" required />
+            <label for="message">Project details</label>
+            <textarea id="message" name="message" placeholder="What’s the story? Where will it live? Timeline? Budget range?" required></textarea>
+            <button class="btn primary" type="submit">Send</button>
+            <p class="note">Prefer email? <a href="mailto:hello@forgedbyartifact.com">hello@forgedbyartifact.com</a></p>
+          </form>
+        </div>
+        <aside class="hero-card">
+          <h3 style="margin-top:0">Quick facts</h3>
+          <ul>
+            <li>Based in Northern Virginia • serving DC/MD/VA and beyond</li>
+            <li>Props, interactives, small scenic, repairs & multiples</li>
+            <!-- <li>Insurance & COIs available on request</li> -->
+            <li>Rush work considered case‑by‑case</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <div class="logo" aria-label="Artifact home">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span>Artifact</span>
+      </div>
+      <div class="social">
+        <!-- Add your links -->
+        <a href="mailto:hello@forgedbyartifact.com">Email</a>
+        <a href="#" aria-disabled="true" title="Instagram (coming soon)">Instagram</a>
+      </div>
+      <div>© <span id="year"></span> Artifact • forgedbyartifact.com</div>
+    </div>
+  </footer>
+
+  <script>
+    // Current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // smooth-scroll fix
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',e=>{
+        const id=a.getAttribute('href').slice(1);
+        const el=document.getElementById(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth',block:'start'}); }
+      });
+    });
+  </script>
+
+
+</body>
+</html>
