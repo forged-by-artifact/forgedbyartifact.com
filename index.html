@@ -14,7 +14,7 @@
   <meta property="og:image" content="/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Favicon placeholders (replace with your own) -->
+  <!-- Favicon (unified glyph shape; white mark on black square) -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%23000'/><path d='M32 6 10 58h8l5-12h18l5 12h8L32 6zm-3 28 7-16 7 16H29z' fill='%23fff'/></svg>">
 
   <style>
@@ -38,8 +38,8 @@
     header{position:sticky;top:0;z-index:50;background:rgba(10,10,12,.7);backdrop-filter: blur(8px);border-bottom:1px solid #1e1e22}
     nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
     .logo{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
-    .logo-mark{width:28px;height:28px;border-radius:8px;background:conic-gradient(from 210deg, var(--brand), var(--brand-2));display:grid;place-items:center;box-shadow:var(--shadow)}
-    .logo-mark svg{width:18px;height:18px}
+    .logo-mark{width:28px;height:28px;border-radius:8px;background:conic-gradient(from 210deg, var(--brand), var(--brand-2));display:grid;place-items:center;box-shadow:var(--shadow); color:#111}
+    .logo-mark svg{width:18px;height:18px;display:block}
     .navlinks{display:flex;gap:18px;flex-wrap:wrap}
     .btn{display:inline-block;padding:12px 18px;border-radius:12px;border:1px solid #2a2a2f;background:#17171b;color:var(--text);box-shadow:var(--shadow)}
     .btn.primary{background:linear-gradient(145deg,var(--brand),#d38a2a);color:#1a1206;border-color:#000;font-weight:700}
@@ -111,7 +111,10 @@
       <nav>
         <div class="logo">
           <span class="logo-mark" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2 3 22h6l3-7 3 7h6L12 2Z" fill="#111"/><path d="M12 4 5 20h2.6l2.6-6h3.6l2.6 6H19L12 4Z" fill="currentColor"/></svg>
+            <!-- Unified glyph (same path as favicon), colored presentation for header -->
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M32 6 10 58h8l5-12h18l5 12h8L32 6zm-3 28 7-16 7 16H29z" fill="currentColor"/>
+            </svg>
           </span>
           <span>Artifact</span>
         </div>
@@ -141,8 +144,9 @@
           <p class="note" style="margin-top:10px">Serving the Mid‑Atlantic and beyond. Based in Northern Virginia.</p>
         </div>
         <div class="hero-card">
-          <!-- Replace the placeholder with your own image(s) -->
+          <!-- Replace the placeholder with your own image(s) 
           <img alt="Prop fabrication montage placeholder" src="data:image/svg+xml;charset=utf-8,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23221c10'/><stop offset='1' stop-color='%230f1517'/></linearGradient></defs><rect width='100%' height='100%' fill='url(%23g)'/><g fill='%23e0a34b' fill-opacity='.18'><circle cx='200' cy='160' r='120'/><rect x='760' y='420' width='260' height='140' rx='18'/><path d='M520 120l80 180-160 0z'/></g><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='white' fill-opacity='.55' font-family='Inter,Arial' font-size='28'>Replace with portfolio image</text></svg>`)}" />
+          -->
         </div>
       </div>
     </section>
@@ -151,15 +155,14 @@
     <section id="work" aria-label="Work">
       <div class="container">
         <h2>Selected Work</h2>
-        <p class="lead">A few recent builds. Swap these placeholders with your photos and add a short line of context.</p>
+        <p class="lead">A few recent builds.</p>
         <div class="grid">
-          <!-- Portfolio shots (replace src with real images in /images) -->
-          <figure class="shot"><img alt="Weathered access panel prop" src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=1200&auto=format&fit=crop"/><figcaption class="label">Access Panel — Sci‑Fi</figcaption></figure>
-          <figure class="shot"><img alt="Wooden crate with stenciled markings" src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop"/><figcaption class="label">Crate — Period Dressing</figcaption></figure>
-          <figure class="shot"><img alt="Machined brass component" src="https://images.unsplash.com/photo-1532634896-26909d0d4b6a?q=80&w=1200&auto=format&fit=crop"/><figcaption class="label">Component — Practical FX</figcaption></figure>
-          <figure class="shot"><img alt="Electronics panel with toggle switches" src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop"/><figcaption class="label">Control Panel — Interactive</figcaption></figure>
-          <figure class="shot"><img alt="Leather-bound field journal" src="https://images.unsplash.com/photo-1523419409543-a5e549c1ae67?q=80&w=1200&auto=format&fit=crop"/><figcaption class="label">Hero Object — Film</figcaption></figure>
-          <figure class="shot"><img alt="Metal signage with aged paint" src="https://images.unsplash.com/photo-1514890547357-a9ee9ee7e1fe?q=80&w=1200&auto=format&fit=crop"/><figcaption class="label">Signage — Set Dressing</figcaption></figure>
+          <figure class="shot"><img alt="Coming Soon" src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=1200&auto=format&fit=crop"/><figcaption class="label">Coming Soon</figcaption></figure>
+          <figure class="shot"><img alt="Coming Soon" src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop"/><figcaption class="label">Coming Soon</figcaption></figure>
+          <figure class="shot"><img alt="Coming Soon" src="https://images.unsplash.com/photo-1532634896-26909d0d4b6a?q=80&w=1200&auto=format&fit=crop"/><figcaption class="label">Coming Soon</figcaption></figure>
+          <figure class="shot"><img alt="Coming Soon" src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop"/><figcaption class="label">Coming Soon</figcaption></figure>
+          <figure class="shot"><img alt="Coming Soon" src="https://images.unsplash.com/photo-1523419409543-a5e549c1ae67?q=80&w=1200&auto=format&fit=crop"/><figcaption class="label">Coming Soon</figcaption></figure>
+          <figure class="shot"><img alt="Coming Soon" src="https://images.unsplash.com/photo-1514890547357-a9ee9ee7e1fe?q=80&w=1200&auto=format&fit=crop"/><figcaption class="label">Coming Soon</figcaption></figure>
         </div>
       </div>
     </section>
@@ -212,7 +215,7 @@
     <section id="about" aria-label="About">
       <div class="container">
         <h2>About Artifact</h2>
-        <p class="lead">We’re a small shop focused on environmental storytelling. Our builds are engineered for repeat handling and close‑up scrutiny — because the best props don’t just decorate a scene, they live in it.</p>
+        <p class="lead">We’re a small shop focused on environmental storytelling. Our builds are engineered for repeat handling and close‑up scrutiny — because the best artifacts don’t just decorate a scene, they live there.</p>
       </div>
     </section>
 
@@ -223,7 +226,6 @@
           <h2>Start a project</h2>
           <p class="lead">Tell us what you’re building. We’ll reply with next steps and a ballpark estimate.</p>
           <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-            <!-- Netlify-compatible static form (works on GitHub Pages when paired with Netlify, or replace with mailto:) -->
             <input type="hidden" name="form-name" value="contact" />
             <p hidden>
               <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
@@ -254,11 +256,14 @@
   <footer>
     <div class="container foot">
       <div class="logo" aria-label="Artifact home">
-        <span class="logo-mark" aria-hidden="true"></span>
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M32 6 10 58h8l5-12h18l5 12h8L32 6zm-3 28 7-16 7 16H29z" fill="currentColor"/>
+          </svg>
+        </span>
         <span>Artifact</span>
       </div>
       <div class="social">
-        <!-- Add your links -->
         <a href="mailto:hello@forgedbyartifact.com">Email</a>
         <a href="#" aria-disabled="true" title="Instagram (coming soon)">Instagram</a>
       </div>
@@ -270,7 +275,7 @@
     // Current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // smooth-scroll fix
+    // Smooth-scroll for on-page links
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click',e=>{
         const id=a.getAttribute('href').slice(1);
@@ -279,7 +284,6 @@
       });
     });
   </script>
-
 
 </body>
 </html>
