@@ -1,0 +1,13 @@
+Make a folder: /projects/<slug>/ (e.g., radio-console).
+
+Copy the template: Paste _template/index.html into that folder and edit:
+
+Title, date, tags, text sections.
+
+Update gallery image filenames.
+
+Add images: Drop your .jpg/.png into that folder. Use cover.jpg for the main thumbnail.
+
+Update the list: Append an entry to /projects/projects.json with the same slug and thumb path.
+
+Commit & push. The home page will pull from the JSON and show your new card automatically.

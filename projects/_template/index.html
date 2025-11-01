@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Artifact — Project</title>
+  <meta name="description" content="Build diary for an Artifact project." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%23000'/><path d='M32 6 10 58h8l5-12h18l5 12h8L32 6zm-3 28 7-16 7 16H29z' fill='%23fff'/></svg>">
+  <style>
+    :root{--bg:#0b0b0c;--panel:#121214;--text:#f3f3f3;--muted:#b6b6be;--brand:#e0a34b;--brand-2:#7ec6c9;--accent:#ffedc9;--max:1100px;--radius:18px;--shadow:0 10px 30px rgba(0,0,0,.35)}
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,var(--bg),#121217 45%,#141418);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
+    a{color:var(--brand)}
+    .container{max-width:var(--max);margin:0 auto;padding:24px}
+    header{border-bottom:1px solid #1e1e22}
+    .crumbs{font-size:14px;color:var(--muted)}
+    h1{margin:.2em 0 .4em;font-size:clamp(28px,3.6vw,44px)}
+    .meta{color:var(--muted);font-size:14px}
+    .lead{color:var(--muted)}
+    .gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:10px;margin:18px 0}
+    .ph{grid-column:span 6;border:1px solid #2a2a2f;border-radius:14px;overflow:hidden;background:#0e0e11}
+    .ph img{display:block;width:100%;height:260px;object-fit:cover}
+    .step{border-left:3px solid var(--brand);padding-left:12px;margin:22px 0}
+    footer{border-top:1px solid #1e1e22;color:#bdbdc4;margin-top:36px;padding-top:18px}
+    .back{display:inline-block;margin-top:10px}
+    .todo{outline:2px dashed #d38a2a; outline-offset:6px; border-radius:8px; padding:6px 8px}
+    .tag{display:inline-block;margin-right:8px;margin-bottom:6px;padding:6px 10px;border:1px solid #32323a;border-radius:999px;color:var(--accent);background:#17171b;font-size:12px}
+    /* lightbox */
+    .lb{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center}
+    .lb img{max-width:92vw;max-height:88vh;border-radius:12px}
+    .lb.show{display:flex}
+  </style>
+  <!--
+    ✅ JSON-DRIVEN PAGE
+    This file auto-populates itself from /projects/projects.json using the folder name as the slug.
+    Update content EXCLUSIVELY in projects/projects.json — no edits needed in individual pages.
+
+    QUICK CHECKLIST (edit projects/projects.json):
+    - slug:           "radio-console"
+    - title:          "Retro Radio Console"
+    - date:           "2025-10-01"
+    - tags:           ["wood","electronics","distressing"]
+    - blurb:          Short intro line
+    - cover:          "/projects/radio-console/cover.jpg"
+    - images:         ["cover.jpg","detail-1.jpg","process-1.jpg"]  (paths are relative to the project folder)
+    - diary:          [{"title":"Day 1 — Concept","body":"..."}, ...]
+    - meta (optional): {"client":"","location":"","notes":""}
+  -->
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="crumbs">
+        <a id="crumbHome" href="#">Artifact</a> /
+        <a id="crumbWork" href="#">Work</a> /
+        <span data-field="title" class="todo">[TODO title]</span>
+      </div>
+      <h1 data-field="title" class="todo">[TODO title]</h1>
+      <div class="meta"><span data-field="date" class="todo">[TODO date]</span> • <span data-field="tags" class="todo">[TODO tags]</span></div>
+      <p data-field="blurb" class="lead todo">[TODO one-line summary]</p>
+    </header>
+
+    <section>
+      <h2>Overview</h2>
+      <p data-field="overview" class="todo">[Optional: write a paragraph in projects.json under "overview".]</p>
+    </section>
+
+    <section>
+      <h2>Gallery</h2>
+      <div class="gallery" id="gallery">
+        <p class="todo">[Drop images in this folder; list them in projects.json → images[]]</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Build diary</h2>
+      <div id="diary"><p class="todo">[Add diary entries in projects.json → diary[]]</p></div>
+    </section>
+
+    <footer>
+      <a class="back" id="backAll" href="#">← Back to all projects</a>
+    </footer>
+  </div>
+
+  <div class="lb" id="lb" role="dialog" aria-label="Image viewer" aria-modal="true"><img alt=""/></div>
+<script>
+  (function(){
+    // Resolve base path (works for root or subpath sites)
+    const before = location.pathname.split('/projects/')[0] || '';
+    const root = before.endsWith('/') ? before : before + '/';
+
+    const slugMatch = location.pathname.split('/projects/')[1] || '';
+    const slug = slugMatch.split('/')[0];
+
+    const projectsURL  = root + 'projects/projects.json';
+    const projectFolder = root + 'projects/' + slug;
+
+    const $ = sel => document.querySelector(sel);
+    const set = (attr, val) => {
+      document.querySelectorAll(`[data-field="${attr}"]`).forEach(el=>{
+        if (!val) { el.classList.add('todo'); return; }
+        if (attr === 'tags' && Array.isArray(val)) {
+          el.innerHTML = val.map(t=>`<span class="tag">${t}</span>`).join('');
+        } else if (attr === 'date') {
+          const d = new Date(val);
+          el.textContent = isNaN(d) ? val : d.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'});
+        } else {
+          el.textContent = val;
+        }
+        el.classList.remove('todo');
+      });
+    };
+
+    fetch(projectsURL)
+      .then(r=>r.json())
+      .then(list=>{
+        const p = (list||[]).find(x=>x.slug===slug);
+        if (!p) throw new Error(`Project not found: ${slug}`);
+
+        // Breadcrumb/Back links respect subpath
+        $('#crumbHome').href = root;
+        $('#crumbWork').href = root + 'index.html#work';
+        $('#backAll').href   = root + 'index.html#work';
+
+        document.title = `Artifact — ${p.title}`;
+        set('title', p.title);
+        set('date', p.date);
+        set('tags', p.tags);
+        set('blurb', p.blurb);
+        set('overview', p.overview);
+
+        // Gallery
+        const gallery = $('#gallery');
+        gallery.innerHTML = '';
+        (p.images || []).forEach(name=>{
+          const href = /^https?:\/\//.test(name) ? name : `${projectFolder}/${name}`;
+          const a = document.createElement('a');
+          a.className = 'ph';
+          a.href = href;
+          a.innerHTML = `<img src="${href}" alt="${p.title}">`;
+          gallery.appendChild(a);
+        });
+        if (!(p.images || []).length) {
+          const ph = document.createElement('p');
+          ph.className = 'todo';
+          ph.textContent = '[Add images to images[]]';
+          gallery.appendChild(ph);
+        }
+
+        // Lightbox refs (define before handlers)
+        const lb = document.getElementById('lb');
+        const lbimg = lb.querySelector('img');
+
+        // Gallery lightbox
+        document.getElementById('gallery').addEventListener('click', e=>{
+          const a = e.target.closest('a.ph');
+          if (!a) return;
+          e.preventDefault();
+          lbimg.src = a.getAttribute('href');
+          lb.classList.add('show');
+        });
+
+        // Diary
+        const diary = $('#diary');
+        diary.innerHTML = '';
+        (p.diary || []).forEach(step=>{
+          const div = document.createElement('div');
+          div.className = 'step';
+          let html = `<strong>${step.title || ''}</strong><br/>${step.body || ''}`;
+
+          if (step.image) {
+            const href = /^https?:\/\//.test(step.image) ? step.image : `${projectFolder}/${step.image}`;
+            html += `
+              <div style="margin-top:10px;">
+                <a class="ph" href="${href}">
+                  <img src="${href}" alt="${step.title || 'Process image'}"
+                       style="max-width:100%;border-radius:10px;margin-top:6px;border:1px solid #2a2a2f;">
+                </a>
+              </div>`;
+          }
+
+          div.innerHTML = html;
+          diary.appendChild(div);
+        });
+        if (!(p.diary || []).length) {
+          const ph = document.createElement('p');
+          ph.className = 'todo';
+          ph.textContent = '[Add diary entries to diary[]]';
+          diary.appendChild(ph);
+        }
+
+        // Diary lightbox (same handler style)
+        document.getElementById('diary').addEventListener('click', e=>{
+          const a = e.target.closest('a.ph');
+          if (!a) return;
+          e.preventDefault();
+          lbimg.src = a.getAttribute('href');
+          lb.classList.add('show');
+        });
+
+        // Close lightbox
+        lb.addEventListener('click', ()=>lb.classList.remove('show'));
+        document.addEventListener('keydown', e=>{
+          if (e.key === 'Escape') lb.classList.remove('show');
+        });
+      })
+      .catch(err=>{
+        console.error(err);
+        document.querySelectorAll('.todo').forEach(el=>el.classList.add('todo'));
+      });
+  })();
+</script>
+
+</body>
+</html>
