@@ -7,7 +7,9 @@
     "blurb": "Real time weather over RF airwaves to vintage TVs.",
     "overview": "An Open House event at the local Nova Labs makerspace needed exhibits and demos. I had previously been experimenting with local RF signal broadcasting and put together a custom Nova Labs weather channel using the Weatherstar 4000+ open source project.",
     "thumb": "/projects/weather-channel/cover.png",
-    "images": ["cover.png", "PXL_20250604_204335224.MP~2.jpg", "PXL_20250607_182129726.MP.jpg", "PXL_20251013_002752105.jpg"],
+    "images": ["cover.png", "PXL_20250604_204335224.MP~2.jpg", "PXL_20250607_182129726.MP.jpg", "PXL_20251013_002752105.jpg",
+        { "youtube": "https://youtu.be/yw7kO271o-w", "title": "Open House TV Prop Demo" }
+    ],
     "diary": [
       {
         "title": "Day 1 — RF Testing",
@@ -26,7 +28,8 @@
       },
       {
         "title": "Day 4 - Open House",
-        "body": "The open source project Weatherstar 4000+ was hosted on github pages and the raspberry pi acts as a kiosk to view it. A display at Nova Labs makerspace open house was prepared to broadcast it to multiple vintage TVs over the air."
+        "body": "The open source project Weatherstar 4000+ was hosted on github pages and the raspberry pi acts as a kiosk to view it. A display at Nova Labs makerspace open house was prepared to broadcast it to multiple vintage TVs over the air.",
+        "youtube": "https://youtu.be/yw7kO271o-w"
       }
     ],
     "meta": { "client": "Nova Labs", "location": "NoVA", "notes": "" }

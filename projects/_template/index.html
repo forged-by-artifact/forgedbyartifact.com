@@ -26,9 +26,11 @@
     .todo{outline:2px dashed #d38a2a; outline-offset:6px; border-radius:8px; padding:6px 8px}
     .tag{display:inline-block;margin-right:8px;margin-bottom:6px;padding:6px 10px;border:1px solid #32323a;border-radius:999px;color:var(--accent);background:#17171b;font-size:12px}
     /* lightbox */
-    .lb{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center}
-    .lb img{max-width:92vw;max-height:88vh;border-radius:12px}
+    .lb{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;padding:16px}
     .lb.show{display:flex}
+    #lbInner{max-width:92vw;max-height:88vh;display:flex;align-items:center;justify-content:center}
+    #lbImg{max-width:92vw;max-height:88vh;border-radius:12px}
+    #lbVid iframe{width:min(92vw,1280px);height:min(82vh,720px);border:0;border-radius:12px}
   </style>
   <!--
     ✅ JSON-DRIVEN PAGE
@@ -36,15 +38,14 @@
     Update content EXCLUSIVELY in projects/projects.json — no edits needed in individual pages.
 
     QUICK CHECKLIST (edit projects/projects.json):
-    - slug:           "radio-console"
-    - title:          "Retro Radio Console"
-    - date:           "2025-10-01"
-    - tags:           ["wood","electronics","distressing"]
-    - blurb:          Short intro line
-    - cover:          "/projects/radio-console/cover.jpg"
-    - images:         ["cover.jpg","detail-1.jpg","process-1.jpg"]  (paths are relative to the project folder)
-    - diary:          [{"title":"Day 1 — Concept","body":"..."}, ...]
-    - meta (optional): {"client":"","location":"","notes":""}
+    - slug:    "radio-console"
+    - title:   "Retro Radio Console"
+    - date:    "2025-10-01"
+    - tags:    ["wood","electronics","distressing"]
+    - blurb:   Short intro line
+    - cover:   "/projects/radio-console/cover.jpg"
+    - images:  ["cover.jpg", {"youtube":"https://youtu.be/XXXXXXXXXXX","title":"teaser"}]
+    - diary:   [{"title":"Day 1","body":"..."},{"title":"Test","body":"...","image":"detail-1.jpg","youtube":"https://youtu.be/XXXXXXXXXXX"}]
   -->
 </head>
 <body>
@@ -68,7 +69,7 @@
     <section>
       <h2>Gallery</h2>
       <div class="gallery" id="gallery">
-        <p class="todo">[Drop images in this folder; list them in projects.json → images[]]</p>
+        <p class="todo">[Add media in projects.json → images[]]</p>
       </div>
     </section>
 
@@ -82,7 +83,17 @@
     </footer>
   </div>
 
-  <div class="lb" id="lb" role="dialog" aria-label="Image viewer" aria-modal="true"><img alt=""/></div>
+  <!-- Shared lightbox for images & YouTube -->
+  <div class="lb" id="lb" role="dialog" aria-label="Media viewer" aria-modal="true">
+    <div id="lbInner">
+      <img id="lbImg" alt="" style="display:none"/>
+      <div id="lbVid" style="display:none">
+        <iframe id="lbIframe" src="" title="YouTube video"
+                allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
 <script>
   (function(){
     // Resolve base path (works for root or subpath sites)
@@ -92,7 +103,7 @@
     const slugMatch = location.pathname.split('/projects/')[1] || '';
     const slug = slugMatch.split('/')[0];
 
-    const projectsURL  = root + 'projects/projects.json';
+    const projectsURL   = root + 'projects/projects.json';
     const projectFolder = root + 'projects/' + slug;
 
     const $ = sel => document.querySelector(sel);
@@ -111,13 +122,20 @@
       });
     };
 
+    // --- YouTube helpers ---
+    const YT_ID = url => {
+      const m = String(url).match(/(?:v=|youtu\.be\/|embed\/)([A-Za-z0-9_-]{11})/);
+      return m ? m[1] : null;
+    };
+    const ytThumb = id => `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+
     fetch(projectsURL)
       .then(r=>r.json())
       .then(list=>{
         const p = (list||[]).find(x=>x.slug===slug);
         if (!p) throw new Error(`Project not found: ${slug}`);
 
-        // Breadcrumb/Back links respect subpath
+        // Breadcrumb / back links
         $('#crumbHome').href = root;
         $('#crumbWork').href = root + 'index.html#work';
         $('#backAll').href   = root + 'index.html#work';
@@ -129,38 +147,71 @@
         set('blurb', p.blurb);
         set('overview', p.overview);
 
-        // Gallery
+        // --- Lightbox state ---
+        const lb = document.getElementById('lb');
+        const lbImg = document.getElementById('lbImg');
+        const lbVid = document.getElementById('lbVid');
+        const lbIframe = document.getElementById('lbIframe');
+        const items = []; // {type:'image'|'youtube', src?, id?, title?}
+        let idx = -1;
+
+        function openItem(i){
+          if (i < 0 || i >= items.length) return;
+          idx = i;
+          const it = items[i];
+          // reset
+          lbImg.style.display = 'none';
+          lbVid.style.display = 'none';
+          lbIframe.src = '';
+          if (it.type === 'image'){
+            lbImg.src = it.src;
+            lbImg.alt = it.title || '';
+            lbImg.style.display = 'block';
+          } else if (it.type === 'youtube'){
+            lbVid.style.display = 'block';
+            lbIframe.src = `https://www.youtube.com/embed/${it.id}?rel=0&autoplay=1`;
+          }
+          lb.classList.add('show');
+        }
+        function closeLB(){ lb.classList.remove('show'); lbIframe.src = ''; }
+        function nextItem(dir){
+          if (!items.length) return;
+          const n = (idx + dir + items.length) % items.length;
+          openItem(n);
+        }
+
+        // --- GALLERY ---
         const gallery = $('#gallery');
         gallery.innerHTML = '';
-        (p.images || []).forEach(name=>{
-          const href = /^https?:\/\//.test(name) ? name : `${projectFolder}/${name}`;
+        (p.images || []).forEach(entry=>{
+          let item, thumbSrc;
+          if (typeof entry === 'string'){
+            const href = /^https?:///.test(entry) ? entry : `${projectFolder}/${entry}`;
+            item = { type:'image', src: href, title: p.title };
+            thumbSrc = href;
+          } else if (entry && entry.youtube){
+            const id = YT_ID(entry.youtube);
+            if (!id) return;
+            item = { type:'youtube', id, title: entry.title || p.title };
+            thumbSrc = ytThumb(id);
+          } else { return; }
+
           const a = document.createElement('a');
           a.className = 'ph';
-          a.href = href;
-          a.innerHTML = `<img src="${href}" alt="${p.title}">`;
+          a.href = '#';
+          a.dataset.lbIndex = items.length;
+          a.innerHTML = `<img src="${thumbSrc}" alt="${item.title}">`;
+          items.push(item);
           gallery.appendChild(a);
         });
-        if (!(p.images || []).length) {
+        if (!(p.images || []).length){
           const ph = document.createElement('p');
           ph.className = 'todo';
-          ph.textContent = '[Add images to images[]]';
+          ph.textContent = '[Add images/videos to images[]]';
           gallery.appendChild(ph);
         }
 
-        // Lightbox refs (define before handlers)
-        const lb = document.getElementById('lb');
-        const lbimg = lb.querySelector('img');
-
-        // Gallery lightbox
-        document.getElementById('gallery').addEventListener('click', e=>{
-          const a = e.target.closest('a.ph');
-          if (!a) return;
-          e.preventDefault();
-          lbimg.src = a.getAttribute('href');
-          lb.classList.add('show');
-        });
-
-        // Diary
+        // --- DIARY ---
         const diary = $('#diary');
         diary.innerHTML = '';
         (p.diary || []).forEach(step=>{
@@ -168,40 +219,66 @@
           div.className = 'step';
           let html = `<strong>${step.title || ''}</strong><br/>${step.body || ''}`;
 
-          if (step.image) {
-            const href = /^https?:\/\//.test(step.image) ? step.image : `${projectFolder}/${step.image}`;
+          // optional inline image
+          if (step.image){
+            const href = /^https?:///.test(step.image) ? step.image : `${projectFolder}/${step.image}`;
+            const lbIndex = items.length;
+            items.push({ type:'image', src: href, title: step.title || 'Process image' });
             html += `
               <div style="margin-top:10px;">
-                <a class="ph" href="${href}">
+                <a class="ph" href="#" data-lb-index="${lbIndex}">
                   <img src="${href}" alt="${step.title || 'Process image'}"
                        style="max-width:100%;border-radius:10px;margin-top:6px;border:1px solid #2a2a2f;">
                 </a>
               </div>`;
           }
 
+          // optional inline youtube
+          if (step.youtube){
+            const id = YT_ID(step.youtube);
+            if (id){
+              const lbIndex = items.length;
+              items.push({ type:'youtube', id, title: step.title || 'Video' });
+              const thumb = ytThumb(id);
+              html += `
+                <div style="margin-top:10px;">
+                  <a class="ph" href="#" data-lb-index="${lbIndex}">
+                    <img src="${thumb}" alt="${step.title || 'Video'}"
+                         style="max-width:100%;border-radius:10px;margin-top:6px;border:1px solid #2a2a2f;">
+                  </a>
+                </div>`;
+            }
+          }
+
           div.innerHTML = html;
           diary.appendChild(div);
         });
-        if (!(p.diary || []).length) {
+        if (!(p.diary || []).length){
           const ph = document.createElement('p');
           ph.className = 'todo';
           ph.textContent = '[Add diary entries to diary[]]';
           diary.appendChild(ph);
         }
 
-        // Diary lightbox (same handler style)
-        document.getElementById('diary').addEventListener('click', e=>{
-          const a = e.target.closest('a.ph');
-          if (!a) return;
-          e.preventDefault();
-          lbimg.src = a.getAttribute('href');
-          lb.classList.add('show');
-        });
+        // --- Lightbox delegation & controls ---
+        function delegateOpen(containerId){
+          document.getElementById(containerId).addEventListener('click', e=>{
+            const a = e.target.closest('a.ph');
+            if (!a) return;
+            e.preventDefault();
+            const i = Number(a.dataset.lbIndex);
+            if (!Number.isNaN(i)) openItem(i);
+          });
+        }
+        delegateOpen('gallery');
+        delegateOpen('diary');
 
-        // Close lightbox
-        lb.addEventListener('click', ()=>lb.classList.remove('show'));
+        lb.addEventListener('click', closeLB);
         document.addEventListener('keydown', e=>{
-          if (e.key === 'Escape') lb.classList.remove('show');
+          if (!lb.classList.contains('show')) return;
+          if (e.key === 'Escape') closeLB();
+          if (e.key === 'ArrowRight') nextItem(+1);
+          if (e.key === 'ArrowLeft')  nextItem(-1);
         });
       })
       .catch(err=>{
@@ -210,6 +287,5 @@
       });
   })();
 </script>
-
 </body>
 </html>
