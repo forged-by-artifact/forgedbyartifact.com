@@ -186,7 +186,7 @@
         (p.images || []).forEach(entry=>{
           let item, thumbSrc;
           if (typeof entry === 'string'){
-            const href = /^https?:///.test(entry) ? entry : `${projectFolder}/${entry}`;
+            const href = /^https?:\/\//.test(entry) ? entry : `${projectFolder}/${entry}`;
             item = { type:'image', src: href, title: p.title };
             thumbSrc = href;
           } else if (entry && entry.youtube){
@@ -221,7 +221,7 @@
 
           // optional inline image
           if (step.image){
-            const href = /^https?:///.test(step.image) ? step.image : `${projectFolder}/${step.image}`;
+            const href = /^https?:\/\//.test(step.image) ? step.image : `${projectFolder}/${step.image}`;
             const lbIndex = items.length;
             items.push({ type:'image', src: href, title: step.title || 'Process image' });
             html += `
