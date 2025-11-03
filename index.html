@@ -72,21 +72,21 @@
     /* generic safety */
     img { max-width: 100%; height: auto; display: block; }
 
-    /* HERO media box (even if empty now, this reserves space) */
     .hero-card .media {
       width: 100%;
-      aspect-ratio: 16 / 9;           /* reserve height on mobile */
       border-radius: 14px;
       overflow: hidden;
-      background:#0e0e11;
-      border:1px solid #27272c;
+      background: #0e0e11;
+      border: 1px solid #27272c;
     }
+
+    /* let the image dictate its height naturally */
     .hero-card .media img {
       width: 100%;
-      height: 100%;
-      object-fit: contain; /* show entire image */
+      height: auto;
+      object-fit: contain;
       object-position: center;
-      background: #0e0e11; /* letterbox color behind the image */
+      background: #0e0e11;
     }
 
     /* Portfolio cards: keep thumbnails from pushing layout around */
