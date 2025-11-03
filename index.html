@@ -65,6 +65,31 @@
 
     @media (max-width:920px){.hero-grid,.contact{grid-template-columns:1fr}.shot{grid-column:span 6}.steps{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:560px){.shot{grid-column:span 12}.steps{grid-template-columns:1fr}}
+
+    /* never allow sideways scrolling */
+    html, body { overflow-x: hidden; }
+
+    /* generic safety */
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* HERO media box (even if empty now, this reserves space) */
+    .hero-card .media {
+      width: 100%;
+      aspect-ratio: 16 / 9;           /* reserve height on mobile */
+      border-radius: 14px;
+      overflow: hidden;
+      background:#0e0e11;
+      border:1px solid #27272c;
+    }
+    .hero-card .media img { width:100%; height:100%; object-fit:cover; }
+
+    /* Portfolio cards: keep thumbnails from pushing layout around */
+    .shot { aspect-ratio: 4 / 3; }     /* reserve space */
+    .shot img { width:100%; height:100%; object-fit:cover; }
+
+    /* Diary/gallery images already set inline; this helps any stray imgs */
+    .gallery .ph img { width:100%; height:100%; object-fit:cover; }
+
     
     form[name="contact"] {display: none;} 
     
@@ -106,7 +131,9 @@
           <p class="note" style="margin-top:10px">Serving the Mid‑Atlantic and beyond. Based in Northern Virginia.</p>
         </div>
         <div class="hero-card">
-          <img alt="Custom story-driven fabrications" src="projects/ekg-machine/561137153_1264113039092352_6581917268882824650_n.jpg">
+          <div class="media">
+            <img alt="Custom story-driven fabrications" src="projects/ekg-machine/561137153_1264113039092352_6581917268882824650_n.jpg" loading="lazy" width="1600" height="900">
+          </div>
         </div>
       </div>
     </section>
