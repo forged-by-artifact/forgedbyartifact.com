@@ -31,6 +31,26 @@
     #lbInner{max-width:92vw;max-height:88vh;display:flex;align-items:center;justify-content:center}
     #lbImg{max-width:92vw;max-height:88vh;border-radius:12px}
     #lbVid iframe{width:min(92vw,1280px);height:min(82vh,720px);border:0;border-radius:12px}
+    /* Clickable media affordances */
+    .ph{ position:relative }
+    .ph img{ cursor: zoom-in }
+
+    /* Badges (show on hover for pointer devices; always on for touch) */
+    .badge{
+      position:absolute; right:8px; bottom:8px;
+      padding:4px 8px; font-size:12px; border-radius:999px;
+      color:var(--accent); background:rgba(0,0,0,.7);
+      border:1px solid rgba(255,255,255,.15); backdrop-filter:blur(4px);
+      transition:opacity .18s ease, transform .18s ease; opacity:.85;
+    }
+    @media (hover:hover){
+      .badge{ opacity:0; transform:translateY(4px) }
+      .ph:hover .badge{ opacity:1; transform:none }
+    }
+
+    .badge-video::before{ content:"▶ "; font-weight:700 }
+    .badge-zoom::before{ content:"⤢ "; font-weight:700 } /* expand glyph */
+
   </style>
   <!--
     ✅ JSON-DRIVEN PAGE
@@ -200,7 +220,13 @@
           a.className = 'ph';
           a.href = '#';
           a.dataset.lbIndex = items.length;
-          a.innerHTML = `<img src="${thumbSrc}" alt="${item.title}">`;
+          if (item.type === 'youtube') {
+            a.innerHTML = `<img src="${thumbSrc}" alt="${item.title}">
+                          <span class="badge badge-video" aria-hidden="true">Video</span>`;
+          } else {
+            a.innerHTML = `<img src="${thumbSrc}" alt="${item.title}">
+                          <span class="badge badge-zoom" aria-hidden="true">Click to expand</span>`;
+          }
           items.push(item);
           gallery.appendChild(a);
         });
@@ -233,6 +259,7 @@
                 <a class="ph" href="#" data-lb-index="${lbIndex}">
                   <img src="${href}" alt="${step.title || 'Process image'}"
                       style="max-width:100%;border-radius:10px;margin-top:6px;border:1px solid #2a2a2f;">
+                  <span class="badge badge-zoom" aria-hidden="true">Click to expand</span>
                 </a>
               </div>`;
           });
@@ -252,6 +279,7 @@
                 <a class="ph" href="#" data-lb-index="${lbIndex}">
                   <img src="${thumb}" alt="${step.title || 'Video'}"
                       style="max-width:100%;border-radius:10px;margin-top:6px;border:1px solid #2a2a2f;">
+                  <span class="badge badge-video" aria-hidden="true">Video</span>
                 </a>
               </div>`;
           });
