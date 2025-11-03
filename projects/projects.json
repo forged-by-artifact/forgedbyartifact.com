@@ -89,7 +89,7 @@
       {
         "title": "Showtime",
         "body": "Actors were costumed for interacting with trick-or-treaters, and gave candy and fake moustaches. A wet towel was used to simulate a pizza dough and an actor tossed it about while interacting to animate the scene. Another actor seated the children at the table and took their dinner orders for, what else, but candy.",
-        "images": "DSC_0755.jpg, cover.jpg"
+        "images": ["DSC_0755.jpg", "cover.jpg"]
       }
     ],
     "meta": { "client": "", "location": "", "notes": "" }
