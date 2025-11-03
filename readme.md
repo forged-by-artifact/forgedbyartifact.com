@@ -7,11 +7,10 @@ This is my quick guide for adding new portfolio projects that auto‑populate th
 <details>
 <summary><strong>Quick Add Checklist</strong></summary>
 
-1. Make folder: `/projects/<slug>/`  
-2. Copy template: `/projects/_template/index.html` → `/projects/<slug>/index.html`  
-3. Add images: `cover.jpg`, `detail-1.jpg`, `process-1.jpg`, …  
-4. Update `projects/projects.json` with the new entry  
-5. Commit & push (home + project page populate automatically)
+1. Make folder: `/projects/<slug>/`   
+2. Add images: `cover.jpg`, `detail-1.jpg`, `process-1.jpg`, …  
+3. Update `projects/projects.json` with the new entry  
+4. Commit & push (home + project page populate automatically)
 
 </details>
 
@@ -23,14 +22,6 @@ Make a new project folder using a short, lowercase slug:
 ```
 /projects/radio-console/
 ```
-
-Copy the template into it:
-
-```
-/projects/_template/index.html  →  /projects/radio-console/index.html
-```
-
-> The template page auto‑fills from `projects/projects.json`. No edits needed in the HTML.
 
 ---
 
@@ -44,7 +35,6 @@ Place images in the project folder.
 Example:
 ```
 /projects/radio-console/
-  index.html
   cover.jpg
   detail-1.jpg
   process-1.jpg
@@ -103,4 +93,5 @@ fetch('projects/projects.json')
 - **Grid empty on home page**: Check console for a 404 to `projects/projects.json`. Ensure it’s at `/projects/projects.json` (or `projects/projects.json` for subpath sites).
 - **Images not loading**: Filenames are case‑sensitive on Pages; verify paths match exactly.
 - **[TODO] boxes visible**: Those fields are missing in JSON — fill them in and refresh.
+
 
