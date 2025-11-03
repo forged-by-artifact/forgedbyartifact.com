@@ -35,19 +35,61 @@
     "meta": { "client": "Nova Labs", "location": "NoVA", "notes": "" }
   },
   {
-    "slug": "access-panel",
-    "title": "Sci-Fi Access Panel",
-    "date": "2025-11-01",
-    "tags": ["resin", "paint", "hardware"],
-    "blurb": "Greebled panel with functional indicators.",
-    "overview": "Compact wall panel with layered greebles and status LEDs.",
-    "thumb": "/projects/access-panel/cover.jpg",
-    "images": ["cover.jpg", "detail-1.jpg"],
+    "slug": "pizza-oven",
+    "title": "Pizza Time",
+    "date": "2023-10-31",
+    "tags": ["foam", "paint", "holiday"],
+    "blurb": "Foam and fabric portable pizza oven.",
+    "overview": "A Halloween event prompted to decorate a vehicle for trick-or-treaters. I decided on a pizza restaurant theme, and needed the back of my vehicle to appear to contain a brick pizza oven. Foam insulation board was used for the faux brick, and the oven flame effect was produced with a laser projector on a bedsheet and a number of portable fans to animate the projection surface. I prepared costumes and props, which allowed for a server and two kitchen chefs to seat and serve children their Halloween candy as though they were at an outdoor restaurant.",
+    "thumb": "/projects/pizza-oven/cover.jpg",
+    "images": ["cover.jpg", "DSC_0755.jpg", "20231028_172402.jpg", "20231002_213354.jpg", "20231002_214019.jpg", "20231015_210131.jpg", "20231015_210138.jpg", "20231015_212907.jpg", "20231021_131937.jpg", "20231021_143653.jpg", "20231022_135131.jpg", "20231022_162332.jpg", "20231025_220235.jpg", "20231025_220304.jpg",
+        { "youtube": "https://youtu.be/ENrB2-7yK1I", "title": "Pizza Oven Animation Test Demo" }
+    ],
     "diary": [
       {
-        "title": "Layout",
-        "body": "Blocked out greebles; balanced asymmetry for visual interest.",
-        "image": "detail-1.jpg"
+        "title": "Concept",
+        "body": "A rough sketch for the concept. Ensuring the oven opening sizing properly matched a real pizza peel prop which would be used to serve candy to trick-or-treaters. The oven chimney atop the car and pizza themed wheel cover ideas would be cut due to time and complexity constraints.",
+        "images": ["20231002_213354.jpg", "20231002_214019.jpg"]
+      },
+      {
+        "title": "Texture tests",
+        "body": "Turning foam into brick would need to be convincing. Insulation foam board will deform when a heat gun is applied, and it will have interesting organic patterns when sprayed with water before heat treatment. This approach was interesting, but eventually abandoned, and other avenues would be explored.",
+        "images": ["20231015_210131.jpg", "20231015_210138.jpg"]
+      },
+      {
+        "title": "Paint testing",
+        "body": "Brick used in building construction and brick used in ovens have distinct differences. Construction brick is often blemished with white-ish mortar or the remnants of removed siding or other adhered materials. Some red brick may be uniform, but layered reds and browns applied with a sponge give an illusion of depth, with shadow and highlights.",
+        "image": "20231015_212907.jpg"
+      },
+      {
+        "title": "Brick carving",
+        "body": "The oven opening, using the size determined previously, and the brick pattern was sharpie'd on. A heated soldering iron was used to carve the brick by melting the foam insulation board which appears organic and non-uniform. A stiff wire brush was used to texture the insulation board for a convincing brick-like appearance.",
+        "images": ["20231021_131937.jpg","20231021_143653.jpg"]
+      },
+      {
+        "title": "Archway assembly",
+        "body": "Some insulation board from the removed oven opening was used to cut and shape individual bricks, which would border the opening for additional depth.",
+        "image": "20231022_135131.jpg"
+      },
+      {
+        "title": "Painting and portability",
+        "body": "The brick surface and concrete base were painted using colors from paint testing. A blackened creosete/smoke appearance was added above the oven's opening. The oven was then bisected so it could be transported in the vehicle with passengers and installed within it. This was necessary as the geometry of the rear opening of the vehicle was smaller than the interior cargo area within.",
+        "images":["20231022_162332.jpg","20231025_220304.jpg","20231025_220235.jpg"]
+      },
+      {
+        "title": "Oven flame projector testing",
+        "body": "The oven would look most impressive in the dark if its interior was animated with glowing flame. This obviously can't be done practically without being dangerous. This video demonstrates how a battery-powered projector with a red light pattern, a bedsheet, and some portable fans were used to simulate the hearth's toasty insides.",
+        "youtube": "https://youtu.be/ENrB2-7yK1I"
+      },
+      {
+        "title": "Day-of setup",
+        "body": "The installation and props for the pizza kitchen, with various implements for serving candy to trick-or-treaters.",
+        "image": "20231028_172402.jpg"
+      },
+      {
+        "title": "Showtime",
+        "body": "Actors were costumed for interacting with trick-or-treaters, and gave candy and fake moustaches. A wet towel was used to simulate a pizza dough and an actor tossed it about while interacting to animate the scene. Another actor seated the children at the table and took their dinner orders for, what else, but candy.",
+        "images": "DSC_0755.jpg, cover.jpg"
       }
     ],
     "meta": { "client": "", "location": "", "notes": "" }

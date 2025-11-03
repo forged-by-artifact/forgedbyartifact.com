@@ -219,36 +219,43 @@
           div.className = 'step';
           let html = `<strong>${step.title || ''}</strong><br/>${step.body || ''}`;
 
-          // optional inline image
-          if (step.image){
-            const href = /^https?:\/\//.test(step.image) ? step.image : `${projectFolder}/${step.image}`;
+          // handle multiple images or youtube embeds
+          const imgList = Array.isArray(step.images)
+            ? step.images
+            : step.image ? [step.image] : [];
+
+          imgList.forEach(img => {
+            const href = /^https?:\/\//.test(img) ? img : `${projectFolder}/${img}`;
             const lbIndex = items.length;
             items.push({ type:'image', src: href, title: step.title || 'Process image' });
             html += `
               <div style="margin-top:10px;">
                 <a class="ph" href="#" data-lb-index="${lbIndex}">
                   <img src="${href}" alt="${step.title || 'Process image'}"
-                       style="max-width:100%;border-radius:10px;margin-top:6px;border:1px solid #2a2a2f;">
+                      style="max-width:100%;border-radius:10px;margin-top:6px;border:1px solid #2a2a2f;">
                 </a>
               </div>`;
-          }
+          });
 
-          // optional inline youtube
-          if (step.youtube){
-            const id = YT_ID(step.youtube);
-            if (id){
-              const lbIndex = items.length;
-              items.push({ type:'youtube', id, title: step.title || 'Video' });
-              const thumb = ytThumb(id);
-              html += `
-                <div style="margin-top:10px;">
-                  <a class="ph" href="#" data-lb-index="${lbIndex}">
-                    <img src="${thumb}" alt="${step.title || 'Video'}"
-                         style="max-width:100%;border-radius:10px;margin-top:6px;border:1px solid #2a2a2f;">
-                  </a>
-                </div>`;
-            }
-          }
+          const ytList = Array.isArray(step.youtube)
+            ? step.youtube
+            : step.youtube ? [step.youtube] : [];
+
+          ytList.forEach(yt => {
+            const id = YT_ID(yt);
+            if (!id) return;
+            const lbIndex = items.length;
+            items.push({ type:'youtube', id, title: step.title || 'Video' });
+            const thumb = ytThumb(id);
+            html += `
+              <div style="margin-top:10px;">
+                <a class="ph" href="#" data-lb-index="${lbIndex}">
+                  <img src="${thumb}" alt="${step.title || 'Video'}"
+                      style="max-width:100%;border-radius:10px;margin-top:6px;border:1px solid #2a2a2f;">
+                </a>
+              </div>`;
+          });
+        
 
           div.innerHTML = html;
           diary.appendChild(div);
