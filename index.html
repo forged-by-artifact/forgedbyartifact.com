@@ -196,14 +196,14 @@
     // Render projects from /projects/projects.json
     (async function(){
       try{
-        const res=await fetch('/projects/projects.json?cache=' + Date.now());
+        const res=await fetch('projects/projects.json?cache=' + Date.now());
         if(!res.ok) throw new Error('Failed to load projects');
         const projects=await res.json();
         const grid=document.getElementById('projectsGrid');
         projects.forEach(p=>{
           const card=document.createElement('a');
           card.className='shot';
-          card.href = `${root || '/'}project.html?slug=${encodeURIComponent(p.slug)}`;
+          card.href = `project.html?slug=${encodeURIComponent(p.slug)}`;
           card.innerHTML = `<img alt="${p.title}" src="${p.thumb}"><span class="label">${p.title}${p.date ? " — " + new Date(p.date).getFullYear() : ""}</span>`;
           grid.appendChild(card);
         });
