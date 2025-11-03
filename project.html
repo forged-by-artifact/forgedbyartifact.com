@@ -117,8 +117,7 @@
 <script>
   (function(){
     // Resolve base path (works for root or subpath sites)
-    const before = location.pathname.split('/projects/')[0] || '';
-    const root = before.endsWith('/') ? before : before + '/';
+    const root = location.pathname.replace(/[^/]*$/, '');
 
     const qs = new URLSearchParams(location.search);
     const slugFromQS = qs.get('slug');
