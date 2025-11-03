@@ -120,8 +120,10 @@
     const before = location.pathname.split('/projects/')[0] || '';
     const root = before.endsWith('/') ? before : before + '/';
 
-    const slugMatch = location.pathname.split('/projects/')[1] || '';
-    const slug = slugMatch.split('/')[0];
+    const qs = new URLSearchParams(location.search);
+    const slugFromQS = qs.get('slug');
+    const slugFromPath = (location.pathname.split('/projects/')[1] || '').split('/')[0];
+    const slug = slugFromQS || slugFromPath;   // works for both styles
 
     const projectsURL   = root + 'projects/projects.json';
     const projectFolder = root + 'projects/' + slug;

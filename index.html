@@ -203,7 +203,7 @@
         projects.forEach(p=>{
           const card=document.createElement('a');
           card.className='shot';
-          card.href=`/projects/${p.slug}/`;
+          card.href = `${root || '/'}project.html?slug=${encodeURIComponent(p.slug)}`;
           card.innerHTML = `<img alt="${p.title}" src="${p.thumb}"><span class="label">${p.title}${p.date ? " — " + new Date(p.date).getFullYear() : ""}</span>`;
           grid.appendChild(card);
         });
