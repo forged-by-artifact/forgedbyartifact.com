@@ -81,7 +81,13 @@
       background:#0e0e11;
       border:1px solid #27272c;
     }
-    .hero-card .media img { width:100%; height:100%; object-fit:cover; }
+    .hero-card .media img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* show entire image */
+      object-position: center;
+      background: #0e0e11; /* letterbox color behind the image */
+    }
 
     /* Portfolio cards: keep thumbnails from pushing layout around */
     .shot { aspect-ratio: 4 / 3; }     /* reserve space */
