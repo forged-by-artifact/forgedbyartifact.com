@@ -100,14 +100,14 @@
     "date": "2025-10-01",
     "tags": ["woodworking", "electronics", "escape room", "interactive"],
     "blurb": "Animated, aged, abandoned hospital equipment with a secret.",
-    "overview": "A local escape room was seeking collaboration with local propmakers. After some consultation, I was asked to create a new and engaging container for an existing puzzle clue. The theme for the escape room was a midcentury abandoned hospital. We decided on a piece of abandoned medical machinery. It would encorporate a distressed appearance, a keypad, a magnetic locking, spring-loaded hidden door, an animated display, and some engaging dials, buttons, and knobs.",
+    "overview": "A local escape room was seeking collaboration with local propmakers. After some consultation, I was asked to create a new and engaging container for an existing puzzle clue. The theme for the escape room was a midcentury abandoned hospital. We decided on a piece of abandoned medical machinery. It would incorporate a distressed appearance, a keypad, a magnetic locking, spring-loaded hidden door, an animated display, and some engaging dials, buttons, and knobs.",
     "thumb": "/projects/ekg-machine/cover.jpg",
     "images": ["cover.jpg", "561137153_1264113039092352_6581917268882824650_n.jpg", "004.jpg", "008.jpg", "016.jpg", "033.jpg", "040.jpg", "048.jpg", "055.jpg", "069.jpg", "072.jpg", "102.jpg", "109.jpg",
         { "youtube": "https://www.youtube.com/watch?v=HnDqPkYSyUs", "title": "EKG Display Test 1" },
         { "youtube": "https://www.youtube.com/watch?v=H9dMNMdgWHI", "title": "EKG Display Test 2"},
         { "youtube": "https://youtu.be/WGgVGMlihQg", "title": "ShopSabre Bezel Cut"},
-        { "youtube": "https://youtube.com/watch?v=Mmox2j3bn4A", "title": "Visual Greeble Element"}
-
+        { "youtube": "https://youtube.com/watch?v=Mmox2j3bn4A", "title": "Visual Greeble Element"},
+        { "youtube": "https://youtu.be/wosfitE0Pus", "title": "Completed Prop"}
     ],
     "diary": [
       {
@@ -145,6 +145,11 @@
         "title": "Weathering and final assembly",
         "body": "The prop was given a rust and water-damaged appearance. Spraypaint over beaded water was able to provide realistic rust paint bubbling on display elements. Wood stain and stain correction markers of incorrect colors were used to simulate water damage stains.",
         "images": ["072.jpg", "069.jpg", "109.jpg", "cover.jpg", "561137153_1264113039092352_6581917268882824650_n.jpg"]
+      },
+      {
+        "title": "Completed prop",
+        "body": "The keypad was wired to the magnetic lock, and all components were powered.",
+        "youtube": "https://youtu.be/wosfitE0Pus"
       }
     ],
     "meta": { "client": "", "location": "Fairfax, VA", "notes": "" }
