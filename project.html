@@ -70,23 +70,32 @@
   .badge-zoom::before{ content:"⤢ "; font-weight:700 }
 
   /* ---------- DIARY LAYOUT (multi-column thumbnails) ---------- */
-  .step{border-left:3px solid var(--brand);padding-left:12px;margin:22px 0}
+  .step{
+    border-left:3px solid var(--brand);
+    padding-left:12px;
+    margin:22px 0;
+  }
 
-  /* each inline media wrapper inside a step becomes a tile */
-  #diary .step > div{
+  /* Make each clickable media anchor a tile (not the generic div) */
+  #diary .step a.ph{
     display:inline-block;
     width:100%;                 /* 1-up on phones */
     margin:6px 6px 0 0;
     vertical-align:top;
   }
-  /* the <a class="ph"> inside each tile */
-  #diary .ph{ width:100% }
-  #diary .ph img{ height:var(--diary-thumb-h) }  /* compact height for diary */
 
-  /* breakpoints: 2 / 3 / 4 per row */
-  @media (min-width:520px){  #diary .step > div{ width:calc(50% - 6px) } }
-  @media (min-width:900px){  #diary .step > div{ width:calc(33.333% - 8px) } }
-  @media (min-width:1280px){ #diary .step > div{ width:calc(25% - 9px) } }
+  /* Compact diary thumb height (keeps gallery unaffected) */
+  #diary .step a.ph img{
+    height:var(--diary-thumb-h);
+    object-fit:cover;
+    object-position:center;
+  }
+
+  /* Breakpoints: 2 / 3 / 4 per row */
+  @media (min-width:520px){   #diary .step a.ph{ width:calc(50% - 6px); } }
+  @media (min-width:900px){   #diary .step a.ph{ width:calc(33.333% - 8px); } }
+  @media (min-width:1280px){  #diary .step a.ph{ width:calc(25% - 9px); } }
+
 
   footer{border-top:1px solid #1e1e22;color:#bdbdc4;margin-top:36px;padding-top:18px}
   .back{display:inline-block;margin-top:10px}
