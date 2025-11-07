@@ -65,10 +65,18 @@
       cursor: zoom-in;
     }
 
-    /* Breakpoints: 2-up → 3-up → 4-up */
-    @media (min-width: 520px)  { #diary .ph { width: calc(50% - 6px); } }       /* 2 per row */
-    @media (min-width: 900px)  { #diary .ph { width: calc(33.333% - 8px); } }   /* 3 per row */
-    @media (min-width: 1280px) { #diary .ph { width: calc(25% - 9px); } }       /* 4 per row */
+    /* Turn the diary media wrapper <div> into tiles that wrap into rows */
+    #diary .step > div {
+      display: inline-block;
+      width: 100%;                 /* 1-up on phones */
+      margin: 6px 6px 0 0;
+      vertical-align: top;
+    }
+
+    /* 2 / 3 / 4 per row at wider breakpoints */
+    @media (min-width: 520px)  { #diary .step > div { width: calc(50% - 6px); } }
+    @media (min-width: 900px)  { #diary .step > div { width: calc(33.333% - 8px); } }
+    @media (min-width: 1280px) { #diary .step > div { width: calc(25% - 9px); } }
 
 
     @media (hover:hover){
