@@ -43,6 +43,38 @@
       border:1px solid rgba(255,255,255,.15); backdrop-filter:blur(4px);
       transition:opacity .18s ease, transform .18s ease; opacity:.85;
     }
+
+    /* --- Diary Thumbnail Sizing (no crop, smaller, contain) --- */
+    :root {
+      --diary-thumb-h: 220px; /* you can adjust this later */
+    }
+
+    #diary .ph img {
+      width: 100%;
+      height: var(--diary-thumb-h);
+      object-fit: contain;              /* keep whole image visible */
+      background: #0e0e11;              /* letterbox/pillarbox fill */
+      border: 1px solid #2a2a2f;
+      border-radius: 10px;
+      cursor: zoom-in;                  /* matches gallery affordance */
+    }
+
+    /* Layout when multiple images appear in one diary entry */
+    @media (min-width: 900px) {
+      #diary .step .ph {
+        display: inline-block;
+        width: calc(50% - 8px);
+        margin: 6px 8px 0 0;
+        vertical-align: top;
+      }
+    }
+
+    @media (min-width: 1280px) {
+      #diary .step .ph {
+        width: calc(33.333% - 8px);
+      }
+    }
+
     @media (hover:hover){
       .badge{ opacity:0; transform:translateY(4px) }
       .ph:hover .badge{ opacity:1; transform:none }
