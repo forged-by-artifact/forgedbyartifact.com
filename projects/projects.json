@@ -161,7 +161,7 @@
     "tags": ["cardboard", "foam", "make-fail"],
     "blurb": "An exploration of scale and low-cost material.",
     "overview": "I've always been delighted by small versions of big things or big versions of small things. I was interested in creating a larger-than-convenient build of something mundane at extremely low cost. After a bit of research, cardboard seemed like the perfect route to make my dreams come true. A banana is a universally renowned measurement of scale, so why not complicate things? This is currently an uncomissioned work in progress.",
-    "cover": "/projects/banana/cover.jpg",
+    "thumb": "/projects/banana/cover.jpg",
     "images": ["cover.jpg", "002.jpg", "002.jpg", "002.jpg", "002.jpg", 
                 {"youtube": "https://youtu.be/3f4u6ax3Cj4"}
               ],

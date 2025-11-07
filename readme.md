@@ -53,7 +53,7 @@ Append a new entry with this shape:
   "tags": ["wood", "electronics", "distressing"],
   "blurb": "Interactive console with aged finish and toggles.",
   "overview": "Optional paragraph about goals/constraints.",
-  "cover": "/projects/radio-console/cover.jpg",
+  "thumb": "/projects/radio-console/cover.jpg",
   "images": ["cover.jpg", "detail-1.jpg", "process-1.jpg"],
   "diary": [
     { "title": "Day 1 — Concept & refs", "body": "Notes, sketches, approvals." },
