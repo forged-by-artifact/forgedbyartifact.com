@@ -44,36 +44,32 @@
       transition:opacity .18s ease, transform .18s ease; opacity:.85;
     }
 
-    /* --- Diary Thumbnail Sizing (no crop, smaller, contain) --- */
-    :root {
-      --diary-thumb-h: 220px; /* you can adjust this later */
+    /* Compact, uncropped diary thumbnails (multi-column by breakpoint) */
+    :root { --diary-thumb-h: 200px; } /* tweak 180–220 to taste */
+
+    #diary .ph {
+      position: relative;            /* for badges */
+      display: inline-block;
+      width: 100%;                   /* 1-up by default (narrow screens) */
+      margin: 6px 6px 0 0;
+      vertical-align: top;
     }
 
     #diary .ph img {
       width: 100%;
       height: var(--diary-thumb-h);
-      object-fit: contain;              /* keep whole image visible */
-      background: #0e0e11;              /* letterbox/pillarbox fill */
+      object-fit: cover;             /* no bars; minimal edge crop */
+      object-position: center;       /* use 'top center' if faces crop */
       border: 1px solid #2a2a2f;
       border-radius: 10px;
-      cursor: zoom-in;                  /* matches gallery affordance */
+      cursor: zoom-in;
     }
 
-    /* Layout when multiple images appear in one diary entry */
-    @media (min-width: 900px) {
-      #diary .step .ph {
-        display: inline-block;
-        width: calc(50% - 8px);
-        margin: 6px 8px 0 0;
-        vertical-align: top;
-      }
-    }
+    /* Breakpoints: 2-up → 3-up → 4-up */
+    @media (min-width: 520px)  { #diary .ph { width: calc(50% - 6px); } }       /* 2 per row */
+    @media (min-width: 900px)  { #diary .ph { width: calc(33.333% - 8px); } }   /* 3 per row */
+    @media (min-width: 1280px) { #diary .ph { width: calc(25% - 9px); } }       /* 4 per row */
 
-    @media (min-width: 1280px) {
-      #diary .step .ph {
-        width: calc(33.333% - 8px);
-      }
-    }
 
     @media (hover:hover){
       .badge{ opacity:0; transform:translateY(4px) }
