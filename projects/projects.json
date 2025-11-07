@@ -128,12 +128,13 @@
       {
         "title": "CNC Parts",
         "body": "The ShopSabre CNC router machine would be used to create precision cuts for multiple materials and overlays for the face of the device. The acrylic lens, the bezels of the front panel, and the voids on the front and the back would be routed in with this process.",
-        "images": ["033.jpg", {"youtube": "https://youtu.be/WGgVGMlihQg"}, "048.jpg"]
+        "images": ["033.jpg", "048.jpg"],
+        "youtube": "https://youtu.be/WGgVGMlihQg"
       },
       {
         "title": "Display Animation, Panel Elements",
         "body": "A panel would display the oscilloscope style animation. Multiple animation tests and concepts were used on a 64x64 display originally used in a child's novelty backpack, repurposed for its unusual mix of large size and low resolution. Additional switch and dial greebling was achived by including an unusual piece of vintage photography darkroom equipment. It contained very unfamiliar looking dials, markings, and meters and atmospheric lighting that looked great in darker areas.",
-        "images": [{"youtube": "https://www.youtube.com/watch?v=HnDqPkYSyUs"},{"youtube": "https://www.youtube.com/watch?v=H9dMNMdgWHI"},{"youtube": "https://youtube.com/watch?v=Mmox2j3bn4A"}]
+        "youtube": ["https://www.youtube.com/watch?v=HnDqPkYSyUs", "https://www.youtube.com/watch?v=H9dMNMdgWHI", "https://youtube.com/watch?v=Mmox2j3bn4A"]
       },
       {
         "title": "Design",
