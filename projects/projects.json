@@ -102,13 +102,33 @@
     "blurb": "Animated, aged, abandoned hospital equipment with a secret.",
     "overview": "A local escape room was seeking collaboration with local propmakers. After some consultation, I was asked to create a new and engaging container for an existing puzzle clue. The theme for the escape room was a midcentury abandoned hospital. We decided on a piece of abandoned medical machinery. It would encorporate a distressed appearance, a keypad, a magnetic locking, spring-loaded hidden door, an animated display, and some engaging dials, buttons, and knobs.",
     "thumb": "/projects/ekg-machine/cover.jpg",
-    "images": ["cover.jpg", "561137153_1264113039092352_6581917268882824650_n.jpg",
-        { "youtube": "https://youtu.be/xxxxxxxxxx", "title": "PLACEHOLDER" }
+    "images": ["cover.jpg", "561137153_1264113039092352_6581917268882824650_n.jpg", "004.jpg", "008.jpg", "016.jpg", "033.jpg", "040.jpg", "048.jpg", "055.jpg", "069.jpg", "072.jpg", "102.jpg", "109.jpg",
+        { "youtube": "https://www.youtube.com/watch?v=HnDqPkYSyUs", "title": "EKG Display Test 1" },
+        { "youtube": "https://www.youtube.com/watch?v=H9dMNMdgWHI", "title": "EKG Display Test 2"},
+        { "youtube": "https://youtu.be/WGgVGMlihQg", "title": "ShopSabre Bezel Cut"},
+        { "youtube": "https://youtube.com/watch?v=Mmox2j3bn4A", "title": "Visual Greeble Element"}
+
     ],
     "diary": [
       {
+        "title": "The Escape Room",
+        "body": "This abandoned wartime hospital room was in need of a unique piece.",
+        "images": ["004.jpg"]
+      },
+      {
         "title": "Coming Soon",
-        "body": "A full build diary is on the way."
+        "body": "A full build diary is on the way.",
+        "images": [""]
+      },
+      {
+        "title": "Coming Soon",
+        "body": "A full build diary is on the way.",
+        "images": [""]
+      },
+      {
+        "title": "Coming Soon",
+        "body": "A full build diary is on the way.",
+        "images": [""]
       }
     ],
     "meta": { "client": "", "location": "Fairfax, VA", "notes": "" }
