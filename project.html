@@ -51,6 +51,23 @@
     .badge-video::before{ content:"▶ "; font-weight:700 }
     .badge-zoom::before{  content:"⤢ "; font-weight:700 }
 
+    /* --- Diary-only: badge placement + behavior --- */
+    #diary .ph{
+      position: relative;        /* ensure the badge anchors to the tile */
+      display: block;            /* make the anchor a block so abs pos is reliable */
+    }
+
+    #diary .ph .badge{
+      left: auto;                /* force right/bottom corner in diary tiles */
+      top: auto;
+      right: 8px;
+      bottom: 8px;
+      white-space: nowrap;       /* keep it on one line */
+      z-index: 2;                /* sit above the image */
+      pointer-events: none;      /* never block the click */
+    }
+
+
     /* ---------- Diary grid (new) ---------- */
     :root { --diary-thumb-h: 200px; } /* change to 160–220px to taste */
 
