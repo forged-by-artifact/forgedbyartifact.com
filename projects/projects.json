@@ -112,7 +112,7 @@
     "diary": [
       {
         "title": "The Escape Room",
-        "body": "This abandoned wartime hospital room was in need of a unique piece.",
+        "body": "This abandoned wartime hospital room was in need of a unique piece for clue storage behind a keypad lock. The client requested that it accommodate an existing object's dimensions inside, fit beneath the existing wall guard, and accommodate concealed electrical connection to the outlet. It would be bracketed permanently to the wall with a zero-clearance gap, so escape game players would not reach behind it. It would contain a hidden drawer to contain the clue, which should be non-removable to prevent curious gamers from damaging it.",
         "images": ["004.jpg"]
       },
       {
@@ -123,12 +123,27 @@
       {
         "title": "References",
         "body": "1940s EKG machines were initially paper-fed and needle-marked like a seismograph. Others later used an oscilloscope display which would be both more interesting looking and also more cost effective and reliable to recreate without requiring frequent service. Wooden furniture like a potato storage box had an angled upper portion which could be interesting for a control panel, but a piece of medical equipment like an oscilloscope wasn't the same as a control console. The initial angled display console concept changed to something more like the pictured soviet lab equipment, mixed with the authentic ribbon and paper machine. Highly weathered rust effects would be desired and reference textures were recorded.",
-        "images": ["ref1.jpg", "ref2.jpg", "ref3.jpg", "016.jpg", "040.jpg"]
+        "images": ["ref1.png", "ref2.png", "ref3.png", "016.jpg", "040.jpg"]
       },
       {
-        "title": "Coming Soon",
-        "body": "A full build diary is on the way.",
-        "images": [""]
+        "title": "CNC Parts",
+        "body": "The ShopSabre CNC router machine would be used to create precision cuts for multiple materials and overlays for the face of the device. The acrylic lens, the bezels of the front panel, and the voids on the front and the back would be routed in with this process.",
+        "images": ["033.jpg", {"youtube": "https://youtu.be/WGgVGMlihQg"}, "048.jpg"]
+      },
+      {
+        "title": "Design",
+        "body": "Initial concept sketches.",
+        "images": ["000.jpg"]
+      },
+      {
+        "title": "Design",
+        "body": "Initial concept sketches.",
+        "images": ["000.jpg"]
+      },
+      {
+        "title": "Design",
+        "body": "Initial concept sketches.",
+        "images": ["000.jpg"]
       }
     ],
     "meta": { "client": "", "location": "Fairfax, VA", "notes": "" }
