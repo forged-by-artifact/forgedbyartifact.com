@@ -137,14 +137,14 @@
         "youtube": ["https://www.youtube.com/watch?v=HnDqPkYSyUs", "https://www.youtube.com/watch?v=H9dMNMdgWHI", "https://youtube.com/watch?v=Mmox2j3bn4A"]
       },
       {
-        "title": "Design",
-        "body": "Initial concept sketches.",
-        "images": ["000.jpg"]
+        "title": "Hidden Drawer",
+        "body": "The interior dimensions of the drawer were the most imporant part of the build, due to the size of the pre-existing object that needed to be stored inside. It dictated many of the prop's final dimensions. A period appropriate, maintenance-free, highly durable slideless drawer design was implemented. It needed to have no vertical or horizontal play, as well as inability to be fully removed or extended to prevent tampering by escape gamers. The magnetic lock's connection plate needed to remain inaccessible and have a mountable surface for adjustable positioning of the spring-loaded addition.",
+        "images": ["055.jpg", "102.jpg"]
       },
       {
-        "title": "Design",
-        "body": "Initial concept sketches.",
-        "images": ["000.jpg"]
+        "title": "Weathering and final assembly",
+        "body": "The prop was given a rust and water-damaged appearance. Spraypaint over beaded water was able to provide realistic rust paint bubbling on display elements. Wood stain and stain correction markers of incorrect colors were used to simulate water damage stains.",
+        "images": ["072.jpg", "069.jpg", "109.jpg", "cover.jpg", "561137153_1264113039092352_6581917268882824650_n.jpg"]
       }
     ],
     "meta": { "client": "", "location": "Fairfax, VA", "notes": "" }
