@@ -162,7 +162,7 @@
     "blurb": "An exploration of scale and low-cost material.",
     "overview": "I've always been delighted by small versions of big things or big versions of small things. I was interested in creating a larger-than-convenient build of something mundane at extremely low cost. After a bit of research, cardboard seemed like the perfect route to make my dreams come true. A banana is a universally renowned measurement of scale, so why not complicate things? This is currently an uncomissioned work in progress.",
     "thumb": "/projects/banana/cover.jpg",
-    "images": ["002.jpg", "005.jpg", "006.jpg", "009.jpg", "009.jpg", "010.jpg", "011.jpg", "012.jpg", "013.jpg", "014.jpg", "015.jpg", "016.jpg", "019.jpg", "021.jpg", "022.jpg", "024.jpg", "025.jpg", "027.jpg", "028.jpg", "029.jpg", "cover.jpg",
+    "images": ["002.jpg", "005.jpg", "030.jpg", "031.jpg", "006.jpg", "009.jpg", "009.jpg", "010.jpg", "011.jpg", "012.jpg", "013.jpg", "014.jpg", "015.jpg", "016.jpg", "019.jpg", "021.jpg", "022.jpg", "024.jpg", "025.jpg", "027.jpg", "028.jpg", "029.jpg", "cover.jpg",
                 {"youtube": "https://youtu.be/3f4u6ax3Cj4"}
               ],
     "diary": [
@@ -173,7 +173,8 @@
       },
       { 
         "title": "Quick Test #1", 
-        "body": "A single peel slice was produced in cardboard and acrylic paints from memory for color, size, and shape. Sticker was borrowed from lunch." 
+        "body": "A single peel slice was produced in cardboard and acrylic paints from memory for color, size, and shape. Sticker was borrowed from lunch.",
+        "image": "030.jpg"
       },
       { 
         "title": "3D Print", 
@@ -183,7 +184,8 @@
       },
       { 
         "title": "3D Cardboard + Waterproof Coating Test", 
-        "body": "A cosplay technique of wrapping a body part in cling film and then duct tape, and drawing the contours of an object onto the tape could be applied to the banana to produce a papercraft model. The tape was removed, cut, and affixed to cardboard to transfer the pattern. The shape was cut with a number of tabs which would allow it to be glued to its neighboring pieces. An experimental waterproof coating of melted beeswax and shellac was prepared and applied to the surface of the cardboard and allowed to dry before painting. Unfortunately the beeswax did not emulsify in the alcohol when cooling so it gives the banana a very bumpy appearance, and the acrylic paint and shellac give it a very glossy, un-banana finish. Detail testing was lazily applied for brown ripening coloring. Another approach would be necessary."
+        "body": "A cosplay technique of wrapping a body part in cling film and then duct tape, and drawing the contours of an object onto the tape could be applied to the banana to produce a papercraft model. The tape was removed, cut, and affixed to cardboard to transfer the pattern. The shape was cut with a number of tabs which would allow it to be glued to its neighboring pieces. An experimental waterproof coating of melted beeswax and shellac was prepared and applied to the surface of the cardboard and allowed to dry before painting. Unfortunately the beeswax did not emulsify in the alcohol when cooling so it gives the banana a very bumpy appearance, and the acrylic paint and shellac give it a very glossy, un-banana finish. Detail testing was lazily applied for brown ripening coloring. Another approach would be necessary.",
+        "image": "031.jpg"
       },
       { 
         "title": "Cardboard slices test", 
