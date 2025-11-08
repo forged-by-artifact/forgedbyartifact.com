@@ -44,7 +44,13 @@
       border:1px solid rgba(255,255,255,.15); backdrop-filter:blur(4px);
       transition:opacity .18s ease, transform .18s ease; opacity:.85;
     }
-    @media (hover:hover){
+
+    body.lb-open .badge {
+      opacity: 0 !important;
+      pointer-events: none !important;
+     }
+
+     @media (hover:hover){
       .badge{ opacity:0; transform:translateY(4px) }
       .ph:hover .badge{ opacity:1; transform:none }
     }
@@ -222,6 +228,7 @@
 
         function openItem(i){
           if (i < 0 || i >= items.length) return;
+          document.body.classList.add('lb-open');
           idx = i;
           const it = items[i];
           // reset
@@ -238,7 +245,7 @@
           }
           lb.classList.add('show');
         }
-        function closeLB(){ lb.classList.remove('show'); lbIframe.src = ''; }
+        function closeLB(){ lb.classList.remove('show'); lbIframe.src = ''; document.body.classList.remove('lb-open'); }
         function nextItem(dir){
           if (!items.length) return;
           const n = (idx + dir + items.length) % items.length;
