@@ -218,5 +218,16 @@
       }
     ],
     "meta": { "client": "Uncommissioned", "location": "NoVA", "notes": "" }
+  },
+  {
+    "slug": "hammer",
+    "title": "Hammer of Thor",
+    "date": "2025-11-01",
+    "tags": ["3D-print", "leather", "painting"],
+    "blurb": "A one-day 3D print drybrush experiment.",
+    "overview": "I came across an incredible model of Thor's hammer which I couldn't wait to 3D print. Printed in matte black, within a few hours I used dry brushing technique to bring this to life. Additional touches of leather and jute gave even more textures to this hero prop. Model credits to Oliver as @Darkwiese on Makerworld. Uncommissioned.",
+    "thumb": "/projects/banana/cover.jpg",
+    "images": ["hammer.jpg"],
+    "diary": []
   }
 ]
