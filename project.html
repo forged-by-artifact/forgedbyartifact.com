@@ -184,8 +184,12 @@
         if (attr === 'tags' && Array.isArray(val)) {
           el.innerHTML = val.map(t=>`<span class="tag">${t}</span>`).join('');
         } else if (attr === 'date') {
-          const d = new Date(val);
-          el.textContent = isNaN(d) ? val : d.toLocaleDateString(undefined,{year:'numeric',month:'short'});
+          const parts = val.split('-').map(Number);
+          const d = new Date(parts[0], parts[1] - 1, parts[2]); // Local, consistent
+          el.textContent = d.toLocaleDateString(undefined, {
+            year: 'numeric',
+            month: 'short',
+          });
         } else {
           el.textContent = val;
         }
