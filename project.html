@@ -185,7 +185,7 @@
           el.innerHTML = val.map(t=>`<span class="tag">${t}</span>`).join('');
         } else if (attr === 'date') {
           const d = new Date(val);
-          el.textContent = isNaN(d) ? val : d.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'});
+          el.textContent = isNaN(d) ? val : d.toLocaleDateString(undefined,{year:'numeric',month:'short'});
         } else {
           el.textContent = val;
         }
