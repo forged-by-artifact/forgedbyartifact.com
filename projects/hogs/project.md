@@ -6,7 +6,7 @@ date: 2026-10-25
 tags: ["leatherwork", "fabricwork","costume"]
 blurb: "Original character costume pieces."
 status: done            # or: in-progress  (shows the orange "On the bench" flag)
-cover:       # default: a file named cover.jpg, else the first photo used below
+cover: PXL_20261027_052142299.jpg      # default: a file named cover.jpg, else the first photo used below
 # client: "Who it was for"
 # location: "Fairfax, VA"
 # featured: true        # pin as the big card on the home page
