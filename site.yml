@@ -11,8 +11,10 @@ google_site_verification: 6m6VZRRuckMWpOoQv_3Qaxz8ukchn5PS2jOINLpp_jA
 eyebrow: Film · Stage · Escape rooms · Events
 headline: Props that look like they've lived a life.
 intro: A one-person prop studio building camera-ready objects with wood, foam, cardboard, CNC, laser, 3D printing and electronics — then aging them until they carry a history.
-# Project whose cover photo fills the hero. Leave blank to use the newest finished project.
+# Project the hero photo links to. Leave blank to use the newest finished project.
 hero: ekg-machine
+# Optional: a specific photo from that project's folder (default: the project's cover photo)
+hero_photo: 561137153_1264113039092352_6581917268882824650_n.jpg
 
 # The black strip under the hero
 skills:

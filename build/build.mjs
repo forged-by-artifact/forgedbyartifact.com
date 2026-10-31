@@ -219,11 +219,13 @@ async function processImage(srcPath, slug, file) {
   return variants; // ascending width
 }
 
-async function processMedia(projects) {
+async function processMedia(projects, site) {
   const jobs = [];
   for (const p of projects) {
     await fs.mkdir(path.join(OUT, 'media', p.slug), { recursive: true });
-    const files = new Set([p.cover, ...p.gallery, ...p.entries.flatMap((e) => e.media)].map((m) => (typeof m === 'string' ? m : m?.file)).filter(Boolean));
+    const heroPhoto = p.slug === site.hero && site.hero_photo ? String(site.hero_photo) : null;
+    if (heroPhoto && !fss.existsSync(path.join(p.dir, heroPhoto))) warn(`site.yml: hero_photo "${heroPhoto}" isn't in projects/${p.slug}/`);
+    const files = new Set([p.cover, heroPhoto && fss.existsSync(path.join(p.dir, heroPhoto)) ? heroPhoto : null, ...p.gallery, ...p.entries.flatMap((e) => e.media)].map((m) => (typeof m === 'string' ? m : m?.file)).filter(Boolean));
     p.media = {};
     for (const file of files) {
       const src = path.join(p.dir, file);
@@ -283,7 +285,7 @@ async function main() {
   console.log(`  ${projects.length} projects: ${projects.map((p) => p.slug).join(', ')}`);
 
   console.log('Processing photos…');
-  await processMedia(projects);
+  await processMedia(projects, site);
 
   console.log('Writing pages…');
   await write('index.html', renderHome(site, projects));

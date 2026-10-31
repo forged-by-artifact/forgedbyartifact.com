@@ -1,0 +1,88 @@
+From b9e4dddbf0149c80a1c4544cb42ba7aad98ab035 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Sat, 31 Oct 2026 16:32:08 -0400
+Subject: [PATCH] Hero: use the photo of the EKG cabinet being built
+
+Adds an optional hero_photo setting in site.yml to pick a specific photo
+from the hero project's folder instead of its cover.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Uxoose5Do2G3Kx2jZLVhqB
+---
+ build/build.mjs     | 8 +++++---
+ build/templates.mjs | 6 ++++--
+ site.yml            | 4 +++-
+ 3 files changed, 12 insertions(+), 6 deletions(-)
+
+diff --git a/build/build.mjs b/build/build.mjs
+index 4bdc7cc..47e98ca 100644
+--- a/build/build.mjs
++++ b/build/build.mjs
+@@ -219,11 +219,13 @@ async function processImage(srcPath, slug, file) {
+   return variants; // ascending width
+ }
+ 
+-async function processMedia(projects) {
++async function processMedia(projects, site) {
+   const jobs = [];
+   for (const p of projects) {
+     await fs.mkdir(path.join(OUT, 'media', p.slug), { recursive: true });
+-    const files = new Set([p.cover, ...p.gallery, ...p.entries.flatMap((e) => e.media)].map((m) => (typeof m === 'string' ? m : m?.file)).filter(Boolean));
++    const heroPhoto = p.slug === site.hero && site.hero_photo ? String(site.hero_photo) : null;
++    if (heroPhoto && !fss.existsSync(path.join(p.dir, heroPhoto))) warn(`site.yml: hero_photo "${heroPhoto}" isn't in projects/${p.slug}/`);
++    const files = new Set([p.cover, heroPhoto && fss.existsSync(path.join(p.dir, heroPhoto)) ? heroPhoto : null, ...p.gallery, ...p.entries.flatMap((e) => e.media)].map((m) => (typeof m === 'string' ? m : m?.file)).filter(Boolean));
+     p.media = {};
+     for (const file of files) {
+       const src = path.join(p.dir, file);
+@@ -283,7 +285,7 @@ async function main() {
+   console.log(`  ${projects.length} projects: ${projects.map((p) => p.slug).join(', ')}`);
+ 
+   console.log('Processing photos…');
+-  await processMedia(projects);
++  await processMedia(projects, site);
+ 
+   console.log('Writing pages…');
+   await write('index.html', renderHome(site, projects));
+diff --git a/build/templates.mjs b/build/templates.mjs
+index 4ae04ec..4cabfea 100644
+--- a/build/templates.mjs
++++ b/build/templates.mjs
+@@ -120,7 +120,9 @@ export function renderHome(site, projects) {
+   const anyWip = projects.some((p) => p.status === 'in-progress');
+   const dataAttrs = (p) => `data-tags="${esc(p.tags.map(tagKey).join(' '))}" data-status="${p.status}"`;
+ 
+-  const heroCover = heroP && largest(heroP, heroP.cover);
++  // site.yml `hero_photo` picks a specific photo from the hero project's folder; default is its cover
++  const heroFile = heroP && (site.hero_photo && heroP.media?.[site.hero_photo] ? site.hero_photo : heroP.cover);
++  const heroCover = heroP && largest(heroP, heroFile);
+   const featuredHtml = featured ? `
+     <a class="card card-feature" href="${workHref(site, depth, featured.slug)}" ${dataAttrs(featured)}>
+       <div class="card-feature-media">${img(featured, featured.cover, depth, { alt: '', sizes: '(min-width: 1000px) 60vw, 100vw' })}</div>
+@@ -163,7 +165,7 @@ ${header(site, depth)}
+       </div>
+     </div>
+     ${heroP ? `<a class="hero-figure" href="${workHref(site, depth, heroP.slug)}">
+-      ${img(heroP, heroP.cover, depth, { alt: heroP.title, sizes: '(min-width: 1000px) 50vw, 100vw', eager: true })}
++      ${img(heroP, heroFile, depth, { alt: heroFile === heroP.cover ? heroP.title : `Building the ${heroP.title}`, sizes: '(min-width: 1000px) 50vw, 100vw', eager: true })}
+       <span class="tag">
+         <span class="hole" aria-hidden="true"></span>
+         <span class="tag-text"><span class="tag-kicker">${esc([`No. ${pad(heroP.no)}`, heroP.location].filter(Boolean).join(' · '))}</span><span class="tag-title">${esc(heroP.title)}</span></span>
+diff --git a/site.yml b/site.yml
+index ad4ad55..a7bd6b6 100644
+--- a/site.yml
++++ b/site.yml
+@@ -11,8 +11,10 @@ google_site_verification: 6m6VZRRuckMWpOoQv_3Qaxz8ukchn5PS2jOINLpp_jA
+ eyebrow: Film · Stage · Escape rooms · Events
+ headline: Props. Costumes. Replicas.
+ intro: A one-person prop studio building camera-ready objects with wood, foam, cardboard, CNC, laser, 3D printing and electronics — then aging them until they carry a history.
+-# Project whose cover photo fills the hero. Leave blank to use the newest finished project.
++# Project the hero photo links to. Leave blank to use the newest finished project.
+ hero: ekg-machine
++# Optional: a specific photo from that project's folder (default: the project's cover photo)
++hero_photo: 561137153_1264113039092352_6581917268882824650_n.jpg
+ 
+ # The black strip under the hero
+ skills:
+-- 
+2.43.0
+
