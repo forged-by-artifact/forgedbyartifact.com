@@ -1,0 +1,37 @@
+# Site-wide settings. Edit text here; projects live in /projects/<slug>/project.md
+
+url: https://forgedbyartifact.com
+name: Artifact
+tagline: Prop shop · Northern Virginia
+email: hello@forgedbyartifact.com
+description: Artifact handcrafts custom props for film, stage, escape rooms and events. A one-person prop studio in Northern Virginia.
+google_site_verification: 6m6VZRRuckMWpOoQv_3Qaxz8ukchn5PS2jOINLpp_jA
+
+# Home page hero
+eyebrow: Film · Stage · Escape rooms · Events
+headline: Props that look like they've lived a life.
+intro: A one-person prop studio building camera-ready objects with wood, foam, cardboard, CNC, laser, 3D printing and electronics — then aging them until they carry a history.
+# Project whose cover photo fills the hero. Leave blank to use the newest finished project.
+hero: ekg-machine
+
+# The black strip under the hero
+skills:
+  - Woodworking
+  - CNC routing
+  - Laser cutting
+  - 3D printing
+  - Foam sculpt
+  - Electronics
+  - Paint & weathering
+
+# The orange work-order block at the bottom of the home page
+contact:
+  heading: Got a scene that needs an object?
+  text: Tell me what the story is, where it lives, and when you need it. I'll reply with next steps and a ballpark.
+  facts:
+    - label: Based in
+      value: Northern Virginia — serving DC, MD, VA and beyond
+    - label: Builds
+      value: Hero props, interactives, small scenic, repairs & multiples
+    - label: Rush work
+      value: Considered case by case
