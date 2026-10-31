@@ -5,7 +5,7 @@ date: 2025-11-01
 status: in-progress
 tags: ["cardboard", "foam", "make-fail"]
 blurb: "An exploration of scale and low-cost material."
-cover: "cover.jpg"
+cover: "PXL_20260914_140118247.jpg"
 client: "Uncommissioned"
 location: "NoVA"
 ---
