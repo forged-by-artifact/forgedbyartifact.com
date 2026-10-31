@@ -120,7 +120,9 @@ export function renderHome(site, projects) {
   const anyWip = projects.some((p) => p.status === 'in-progress');
   const dataAttrs = (p) => `data-tags="${esc(p.tags.map(tagKey).join(' '))}" data-status="${p.status}"`;
 
-  const heroCover = heroP && largest(heroP, heroP.cover);
+  // site.yml `hero_photo` picks a specific photo from the hero project's folder; default is its cover
+  const heroFile = heroP && (site.hero_photo && heroP.media?.[site.hero_photo] ? site.hero_photo : heroP.cover);
+  const heroCover = heroP && largest(heroP, heroFile);
   const featuredHtml = featured ? `
     <a class="card card-feature" href="${workHref(site, depth, featured.slug)}" ${dataAttrs(featured)}>
       <div class="card-feature-media">${img(featured, featured.cover, depth, { alt: '', sizes: '(min-width: 1000px) 60vw, 100vw' })}</div>
@@ -163,7 +165,7 @@ ${header(site, depth)}
       </div>
     </div>
     ${heroP ? `<a class="hero-figure" href="${workHref(site, depth, heroP.slug)}">
-      ${img(heroP, heroP.cover, depth, { alt: heroP.title, sizes: '(min-width: 1000px) 50vw, 100vw', eager: true })}
+      ${img(heroP, heroFile, depth, { alt: heroFile === heroP.cover ? heroP.title : `Building the ${heroP.title}`, sizes: '(min-width: 1000px) 50vw, 100vw', eager: true })}
       <span class="tag">
         <span class="hole" aria-hidden="true"></span>
         <span class="tag-text"><span class="tag-kicker">${esc([`No. ${pad(heroP.no)}`, heroP.location].filter(Boolean).join(' · '))}</span><span class="tag-title">${esc(heroP.title)}</span></span>
